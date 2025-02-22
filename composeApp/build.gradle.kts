@@ -67,9 +67,13 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             api(libs.koin.core)
+            implementation (libs.kotlinx.coroutines.core.jvm)
 
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
+
+
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
