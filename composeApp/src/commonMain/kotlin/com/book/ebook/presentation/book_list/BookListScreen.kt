@@ -1,12 +1,16 @@
 package com.book.ebook.presentation.book_list
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -30,7 +34,7 @@ fun BookListScreenRoot(
     BookListScreen(
         state = state,
         onAction = { action ->
-            when(action){
+            when (action) {
                 is BookListAction.onBookClick -> onBookClick(action.book)
                 else -> Unit
             }
@@ -42,7 +46,7 @@ fun BookListScreenRoot(
 
 @Composable
 fun BookListScreen(
-    state : BookListState,
+    state: BookListState,
     onAction: (BookListAction) -> Unit
 ) {
 
@@ -64,5 +68,13 @@ fun BookListScreen(
             },
             modifier = Modifier.widthIn(max = 400.dp).fillMaxWidth().padding(16.dp)
         )
+
+        Surface(
+            modifier = Modifier.weight(1f).fillMaxWidth(),
+            color = Color.White,
+            shape = RoundedCornerShape(topStart = 25.dp, topEnd = 25.dp)
+        ) {
+
+        }
     }
 }
