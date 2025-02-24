@@ -1,7 +1,6 @@
 package com.book.ebook.domain
 
 data class Book(
-
     val id : String,
     val title : String,
     val imageUrl : String,

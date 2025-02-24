@@ -1,4 +1,4 @@
-rootProject.name = "EBookKMM"
+rootProject.name = "ServiceApp"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
