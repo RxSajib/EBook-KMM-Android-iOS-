@@ -31,7 +31,7 @@ val books = (1..100).map {
         imageUrl = "https:example.api",
         numPages = 100,
         firstPublishYear = null,
-        authors = listOf("Sajib", "Roy"),
+        authors = listOf("My name is sajib", "Roy"),
         languages = emptyList(),
         averageRating = 25.254512,
         numEditions = 100,
@@ -43,7 +43,9 @@ val books = (1..100).map {
 @Composable
 private fun BookListPreview() {
     BookListScreen(
-        state = BookListState(),
-        onAction = {}
+        state = BookListState(
+            searchResult = books
+        ),
+        onAction = {},
     )
 }

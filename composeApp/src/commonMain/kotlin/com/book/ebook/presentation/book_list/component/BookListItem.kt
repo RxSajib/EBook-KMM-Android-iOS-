@@ -7,12 +7,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
@@ -56,7 +58,8 @@ fun BookListItem(
         color = LightBlue.copy(alpha = 0.2f)
     ) {
         Row(
-            modifier = Modifier.padding(16.dp).fillMaxWidth().height(IntrinsicSize.Min)
+            modifier = Modifier.padding(16.dp).fillMaxWidth().height(IntrinsicSize.Min),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Box(modifier = Modifier.height(100.dp), contentAlignment = Alignment.Center){
                 var imageLoadResult by remember {
@@ -87,11 +90,14 @@ fun BookListItem(
                             }else {
                                 ContentScale.Fit
                             },
-                            modifier = Modifier.aspectRatio(ratio = 0.65f, matchHeightConstraintsFirst = true),
+                            modifier = Modifier.aspectRatio(ratio = .6f, matchHeightConstraintsFirst = true),
                         )
                     }
                 }
             }
+            Spacer(
+                modifier = Modifier.width(10.dp)
+            )
 
             Column(
                 modifier = Modifier.fillMaxHeight().weight(1f),
@@ -106,21 +112,27 @@ fun BookListItem(
                 book.authors.firstOrNull()?.let { author ->
                     Text(
                         text = author,
-                        style = MaterialTheme.typography.titleLarge,
+                        style = MaterialTheme.typography.titleMedium,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
                 }
+
                 book.averageRating?.let { rating ->
-                    Text(
-                        text = "${round(rating * 10) / 10.0}",
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                    Icon(
-                        imageVector = Icons.Default.Star,
-                        contentDescription = null,
-                        tint = SandYellow
-                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "${round(rating * 10) / 10.0}",
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                        Icon(
+                            imageVector = Icons.Default.Star,
+                            contentDescription = null,
+                            tint = SandYellow
+                        )
+                    }
+
                 }
             }
 
